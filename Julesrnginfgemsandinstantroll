@@ -1,0 +1,46 @@
+-- Loader Key System Dinamis by Rey_Script
+local keySource = "https://pastebin.com/VfEcSQGy" -- Ganti dengan link key kamu
+local realKey = game:HttpGet(keySource)
+
+-- GUI
+local gui = Instance.new("ScreenGui", game.CoreGui)
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 250, 0, 150)
+frame.Position = UDim2.new(0.5, -125, 0.5, -75)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.Active, frame.Draggable = true, true
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0, 40)
+title.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+title.Text = "🔑 Enter Script Key"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+
+local box = Instance.new("TextBox", frame)
+box.Size = UDim2.new(0.8, 0, 0, 40)
+box.Position = UDim2.new(0.1, 0, 0.4, 0)
+box.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+box.TextColor3 = Color3.fromRGB(255, 255, 255)
+box.PlaceholderText = "Type your key..."
+box.Font = Enum.Font.SourceSans
+box.TextSize = 16
+
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(0.5, 0, 0, 30)
+button.Position = UDim2.new(0.25, 0, 0.75, 0)
+button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+button.Text = "Submit"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.SourceSansBold
+button.TextSize = 16
+
+button.MouseButton1Click:Connect(function()
+    if box.Text == realKey or box.Text == string.gsub(realKey, "%s+", "") then
+        gui:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ALiF999015/Pemaj/main/Jules%20rng%20INF%20gems%20and%20Instant%20roll"))()
+    else
+        game.Players.LocalPlayer:Kick("❌ Wrong Key!")
+    end
+end)
